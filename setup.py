@@ -9,8 +9,8 @@ setup(
     keywords='github labels management pull-requests globs',
     description='Simple CLI & WEB tool for labeling GitHub PRs using globs',
     long_description=long_description,
-    author='Marek Suchánek',
-    author_email='suchama4@fit.cvut.cz',
+    author='Marek Alexa',
+    author_email='alexama1@fit.cvut.cz',
     license='MIT',
     url='https://github.com/cvut/filabel',
     zip_safe=False,
@@ -35,6 +35,17 @@ setup(
         'Flask',
         'jinja2',
         'requests',
+    ],
+    setup_requires=[
+        'pytest-runner'
+    ],
+    tests_require=[
+        'click',
+        'Flask',
+        'jinja2',
+        'requests',
+        'pytest',
+        'betamax'
     ],
     classifiers=[
         'Development Status :: 4 - Beta',
