@@ -14,7 +14,11 @@ setup(
     license='MIT',
     url='https://github.com/cvut/filabel',
     zip_safe=False,
-    packages=find_packages(),
+    packages=find_packages(exclude=[
+        'test'
+        'test_module'
+        'test_environment'
+    ]),
     package_data={
         'filabel': [
             'static/*.css',

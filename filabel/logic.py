@@ -84,7 +84,7 @@ class GitHub:
 
         owner: GtiHub user or org
         repo: repo name
-        lables: all lables this PR will have
+        labels: all labels this PR will have
         """
         url = f'{self.API}/repos/{owner}/{repo}/issues/{number}'
         r = self.session.patch(url, json={'labels': labels})
@@ -116,7 +116,7 @@ class Filabel:
     Main login of PR labeler
     """
     def __init__(self, token, labels,
-                 state='open', base=None, delete_old=True):
+                 state='open', base=None, delete_old=True, session=None):
         """
         token: GitHub token
         labels: Configuration of labels with globs
@@ -124,7 +124,7 @@ class Filabel:
         base: Base branch of PRs to be (re)labeled
         delete_old: If no longer matching labels should be deleted
         """
-        self.github = GitHub(token)
+        self.github = GitHub(token, session)
         self.labels = labels
         self.state = state
         self.base = base

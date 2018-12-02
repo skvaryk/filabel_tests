@@ -8,6 +8,8 @@ import os
 from filabel.logic import Filabel
 from filabel.utils import parse_labels
 
+app = flask.Flask(__name__)
+
 
 def webhook_verify_signature(payload, signature, secret, encoding='utf-8'):
     """
@@ -90,7 +92,7 @@ webhook_processors = {
 }
 
 
-def create_app(*args, **kwargs):
+def create_app(gitHub=None, *args, **kwargs):
     """
     Prepare Filabel Flask application listening to GitHub webhooks
     """
@@ -118,7 +120,10 @@ def create_app(*args, **kwargs):
     filabel = Filabel(app.config['github_token'], app.config['labels'])
 
     try:
-        app.config['github_user'] = filabel.github.user()
+        if gitHub is not None:
+            app.config['github_user'] = gitHub.user()
+        else:
+            app.config['github_user'] = filabel.github.user()
         app.config['filabel'] = filabel
     except Exception:
         app.logger.critical('Bad token: could not get GitHub user!', err=True)
