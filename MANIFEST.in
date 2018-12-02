@@ -1,3 +1,5 @@
 include LICENSE
-include config/auth.example.cfg
-include config/labels.example.cfg
+recursive-include test *.py
+include test_unit/*
+include test_unit/fixtures/configs/*
+include test_unit/fixtures/cassettes/*

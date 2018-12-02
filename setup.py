@@ -14,6 +14,7 @@ setup(
     license='MIT',
     url='https://github.com/cvut/filabel',
     zip_safe=False,
+    include_package_data=True,
     packages=find_packages(exclude=[
         'test'
         'test_module'
