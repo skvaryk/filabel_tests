@@ -52,7 +52,7 @@ def test_proccess_webhook_pr(webapp, username):
                          hashlib.sha1).hexdigest()
     payload = '{ "action": "unknown", ' \
               '"pull_request": { "url": "' + test_repo + '"' \
-              ', "number":"1", "label":"{}"},' + \
+                                                         ', "number":"1", "label":"{}"},' + \
               ' "number": "1" }'
 
     res = webapp.post('/',

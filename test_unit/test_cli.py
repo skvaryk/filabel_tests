@@ -1,7 +1,4 @@
-import os
-import pytest
 import filabel
-
 
 
 def test_cli_help(runner):

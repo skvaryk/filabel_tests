@@ -20,9 +20,6 @@ with betamax.Betamax.configure() as config:
     config.default_cassette_options['match_requests_on'] = [
         'method',
         'uri',
-        'body',
-        'headers',
-        'path',
     ]
     gh_token = os.environ.get('GH_TOKEN', '<TOKEN>')
     if 'GH_TOKEN' in os.environ:
@@ -57,10 +54,13 @@ def token():
     return os.environ.get('GH_TOKEN', '<TOKEN>')
 
 
-@pytest.fixture(params={CONFIGS_PATH + '/labels.abc.cfg', CONFIGS_PATH + '/labels.eraser.cfg'})
-def filabel(betamax_parametrized_session, token, request):
+# @pytest.fixture(params={'/labels.abc.cfg', '/labels.eraser.cfg'})
+@pytest.fixture()
+def filabel(betamax_parametrized_session, token):
     cfg_labels = configparser.ConfigParser()
-    with open(request.param, 'r') as f:
+    # file_path = CONFIGS_PATH + request.param
+    file_path = CONFIGS_PATH + '/labels.abc.cfg'
+    with open(file_path, 'r') as f:
         cfg_labels.read_file(f)
         yield Filabel(token, cfg_labels['labels'], session=betamax_parametrized_session)
 
