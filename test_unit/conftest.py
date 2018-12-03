@@ -8,12 +8,13 @@ from click.testing import CliRunner
 
 from filabel.logic import GitHub, Filabel
 
+DEFAULT_USERNAME = 'skvaryk'
 ABS_PATH = os.path.abspath(os.path.dirname(__file__))
 FIXTURES_PATH = ABS_PATH + '/fixtures'
 CASSETTES_PATH = FIXTURES_PATH + '/cassettes'
 CONFIGS_PATH = FIXTURES_PATH + '/configs'
-
 sys.path.insert(0, ABS_PATH + '/../')
+os.environ['FILABEL_CONFIG'] = CONFIGS_PATH + '/' + 'testConfig.txt'
 
 with betamax.Betamax.configure() as config:
     config.cassette_library_dir = CASSETTES_PATH
@@ -34,11 +35,6 @@ with betamax.Betamax.configure() as config:
 def gh(betamax_parametrized_session, token):
     gh = GitHub(token, betamax_parametrized_session)
     return gh
-
-
-os.environ['FILABEL_CONFIG'] = CONFIGS_PATH + '/' + 'testConfig.txt'
-
-DEFAULT_USERNAME = 'skvaryk'
 
 
 @pytest.fixture

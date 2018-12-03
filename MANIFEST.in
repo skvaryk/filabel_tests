@@ -1,5 +1,6 @@
 include LICENSE
 recursive-include test *.py
+include test_environment/*
 include test_unit/*
 include test_unit/fixtures/configs/*
 include test_unit/fixtures/cassettes/*

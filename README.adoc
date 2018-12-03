@@ -5,6 +5,19 @@
 
 Tool for labeling PRs at GitHub by globs.
 
+== Unit tests
+This project comes with unit tests and betamax recorded cassettes.
+To run the tests, use `python3.7 setup.py test`.
+
+If you wish to re-record the cassettes with your own, follow these steps:
+
+* set `GH_USER` system environment variable to your github username
+* set `GH_TOKEN` system environment variable to your github token
+* run `test_environment/setup.sh` to setup the default repositories
+* run `python3.7 setup.py test`
+* edit `conftest.py` and set the `DEFAULT_USERNAME = 'skvaryk'` to your own username.
+
+To run the tests again without recording, unset the `GH_TOKEN` system environment variable
 
 == Zadání úkolu 3
 
