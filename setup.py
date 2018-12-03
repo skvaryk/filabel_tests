@@ -4,22 +4,18 @@ with open('README.adoc') as f:
     long_description = ''.join(f.readlines())
 
 setup(
-    name='filabel_cvut',
-    version='0.3',
+    name='filabel_tests',
+    version='0.4',
     keywords='github labels management pull-requests globs',
     description='Simple CLI & WEB tool for labeling GitHub PRs using globs',
     long_description=long_description,
     author='Marek Alexa',
     author_email='alexama1@fit.cvut.cz',
     license='MIT',
-    url='https://github.com/cvut/filabel',
+    url='https://github.com/skvaryk/filabel_tests',
     zip_safe=False,
     include_package_data=True,
-    packages=find_packages(exclude=[
-        'test'
-        'test_module'
-        'test_environment'
-    ]),
+    packages=find_packages(),
     package_data={
         'filabel': [
             'static/*.css',
